@@ -1,0 +1,25 @@
+class Solution:
+    def longestCommonPrefix(self, strs: List[str]) -> str:
+        answer= ""
+
+        sortedStrs = sorted(strs, key=len)
+        index = 0
+        tmp = ""
+        for str in sortedStrs[0] : 
+            for i in range(len(strs)) :
+                if tmp == "" :
+                    tmp = strs[i][index]
+                else :
+                    if tmp == strs[i][index] :
+                        continue
+                    else :
+                        return answer
+            index += 1
+            tmp = ""
+            answer += str
+
+        return answer
+        
+        
+# Runtime: 51 ms, faster than 60.34% of Python3 online submissions for Longest Common Prefix.
+# Memory Usage: 13.9 MB, less than 88.43% of Python3 online submissions for Longest Common Prefix.
