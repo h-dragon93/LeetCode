@@ -1,0 +1,28 @@
+class Solution:
+    def isValid(self, s: str) -> bool:
+        stack = []
+        leftParen = ["(", "{", "["]
+
+        for str in s :
+            if str in leftParen:
+                stack.append(str)
+            else :
+                if not stack :
+                    return False
+                else :
+                    if str == ")" and stack[-1] == "(" :
+                        stack.pop()
+                    elif str == "]" and stack[-1] == "[" :
+                        stack.pop()
+                    elif str == "}" and stack[-1] == "{" :
+                        stack.pop()
+                    else :
+                        stack.append(str)
+        if not stack :
+            return True
+        else :
+            return False
+
+
+# Runtime: 53 ms, faster than 39.78% of Python3 online submissions for Valid Parentheses.
+# Memory Usage: 13.9 MB, less than 71.12% of Python3 online submissions for Valid Parentheses.
