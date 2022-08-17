@@ -1,0 +1,22 @@
+class Solution:
+    def removeElement(self, nums: List[int], val: int) -> int:
+
+        ans = 0
+
+        for i in range(len(nums)) :
+            if nums[i] == val :
+                nums[i] = -1
+            else :
+                ans += 1
+        
+        nums.sort(reverse = True)
+        
+        return ans
+        
+        
+# 리턴되는 정렬의 순서는 관계 없음에 착안,
+# nums가 0보다 큰 정수 이므로 -1을 기준으로 현재 리스트 외의 추가 메모리는 사용하지 않음
+# by modifying the input array in-place with O(1) extra memory
+
+# Runtime: 53 ms, faster than 50.16% of Python3 online submissions for Remove Element.
+# Memory Usage: 13.9 MB, less than 63.17% of Python3 online submissions for Remove Element.
