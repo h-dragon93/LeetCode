@@ -1,0 +1,28 @@
+
+class Solution:
+
+    def lengthOfLastWord(self, s: str) -> int:
+
+        li = []
+
+        if s[-1] == " " :
+            flag = False
+            for str in reversed(s):
+                if str == " " and flag == True :
+                    break
+                if str == " " and flag == False :
+                    continue
+                else:
+                    li.append(str)
+                    flag = True
+
+        for str in reversed(s) :
+            if str == " " :
+                break
+            else :
+                li.append(str)
+
+        return len(li)
+        
+        
+#Runtime 34 ms Beats 87.74% Memory 13.8 MB Beats 80.93%
