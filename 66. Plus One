@@ -1,0 +1,7 @@
+class Solution:
+    def plusOne(self, digits: List[int]) -> List[int]:
+        return [int(x) for x in str(int("".join(list(map(str, digits)))) + 1)]
+        
+        
+# Runtime 50 ms   Beats 71.76% 
+# Memory 13.9 MB  Beats 59.31%
