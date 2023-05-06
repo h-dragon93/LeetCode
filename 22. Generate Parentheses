@@ -1,0 +1,58 @@
+## 풀이 1 ##
+# 입력조건 1 ~ 8 중 5 까지 pass 하고 6부터 time limit 남
+
+from itertools import permutations
+
+def isRightParenthesis(s):
+    answer = True
+    arr = []
+
+    for i in s:
+        if i == '(':
+            arr.append(i)
+        else:
+            if arr == []:
+                answer = False
+                break
+            else:
+                arr.pop()
+
+    if arr != []:
+        answer = False
+
+    return answer
+
+
+class Solution:
+    def generateParenthesis(self, n: int) -> List[str]:
+        paren = ["(", ")"] * n
+        ans = []
+        perList = set(permutations(paren, n*2))
+
+        for perli in perList :
+            if isRightParenthesis(perli) :
+                ans.append(perli)
+        answer = []
+        for tup in ans :
+            answer.append(''.join(tup))
+        return answer
+
+
+## 풀이 2 ##
+# backTranking 참고
+
+class Solution:
+    def generateParenthesis(self, n: int) -> List[str]:
+        def backtrack(res, curr, left, right):
+            if len(curr) == n * 2:
+                res.append(curr)
+                return
+            if left < n:
+                backtrack(res, curr + '(', left + 1, right)
+            if right < left:
+                backtrack(res, curr + ')', left, right + 1)
+        res = []
+        backtrack(res, '', 0, 0)
+        return res
+
+        
